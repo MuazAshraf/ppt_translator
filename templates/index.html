@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerPoint Translator Pro</title>
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+
+    <!-- Choices.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"/>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" data-aos="fade-down">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-language"></i>
+                <span>PPT Translator Pro</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How it Works</a>
+                <a href="#translate" class="nav-link btn-primary">Start Translating</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="hero-title">
+                Translate PowerPoint Presentations
+                <span class="highlight">Instantly</span>
+            </h1>
+            <p class="hero-subtitle">
+                Preserve your layout while translating to any language.
+                Powered by advanced AI translation services.
+            </p>
+            <div class="hero-buttons">
+                <a href="#translate" class="btn btn-large btn-primary">
+                    <i class="fas fa-upload"></i> Upload Presentation
+                </a>
+                <a href="#features" class="btn btn-large btn-secondary">
+                    <i class="fas fa-info-circle"></i> Learn More
+                </a>
+            </div>
+        </div>
+        <div class="hero-image" data-aos="fade-left">
+            <div class="floating-card">
+                <i class="fas fa-file-powerpoint"></i>
+            </div>
+            <div class="floating-card small" style="animation-delay: 0.5s;">
+                <i class="fas fa-globe"></i>
+            </div>
+            <div class="floating-card tiny" style="animation-delay: 1s;">
+                <i class="fas fa-check"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Why Choose Our Translator?</h2>
+
+            <div class="features-grid">
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>Layout Preservation</h3>
+                    <p>Maintains your original design, fonts, and formatting perfectly</p>
+                </div>
+
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Smart AI Translation</h3>
+                    <p>Choose from Google, DeepL, or OpenAI for best quality</p>
+                </div>
+
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <h3>Table Support</h3>
+                    <p>Handles complex tables without breaking cell layouts</p>
+                </div>
+
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Fast Processing</h3>
+                    <p>Quick translation with real-time progress tracking</p>
+                </div>
+
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>Your files are processed securely and deleted after translation</p>
+                </div>
+
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>50+ Languages</h3>
+                    <p>Support for major world languages with native quality</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">How It Works</h2>
+
+            <div class="swiper process-swiper" data-aos="fade-up" data-aos-delay="200">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="process-card">
+                            <div class="process-number">01</div>
+                            <i class="fas fa-cloud-upload-alt process-icon"></i>
+                            <h3>Upload File</h3>
+                            <p>Select your PowerPoint presentation file (.pptx)</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="process-card">
+                            <div class="process-number">02</div>
+                            <i class="fas fa-language process-icon"></i>
+                            <h3>Choose Language</h3>
+                            <p>Select target language and translation service</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="process-card">
+                            <div class="process-number">03</div>
+                            <i class="fas fa-cogs process-icon"></i>
+                            <h3>Processing</h3>
+                            <p>AI translates while preserving your layout</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="process-card">
+                            <div class="process-number">04</div>
+                            <i class="fas fa-download process-icon"></i>
+                            <h3>Download</h3>
+                            <p>Get your translated presentation instantly</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Translation Section -->
+    <section id="translate" class="translate-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Start Translating</h2>
+
+            <div class="upload-container" data-aos="fade-up" data-aos-delay="200">
+                <form id="translationForm" enctype="multipart/form-data">
+
+                    <!-- File Upload Area -->
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" id="fileInput" name="file" accept=".pptx" hidden>
+                        <div class="upload-content">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h3>Drag & Drop Your PowerPoint File</h3>
+                            <p>or click to browse</p>
+                            <button type="button" class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+                                Select File
+                            </button>
+                        </div>
+                        <div class="file-info" id="fileInfo" style="display: none;">
+                            <i class="fas fa-file-powerpoint"></i>
+                            <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                                <span id="fileName"></span>
+                                <span id="fileSize" style="font-size: 0.85em; color: #666; margin-top: 2px;"></span>
+                            </div>
+                            <button type="button" class="btn-remove" onclick="removeFile()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Translation Options -->
+                    <div class="options-grid">
+                        <div class="option-group">
+                            <label for="targetLangs">Target Languages</label>
+                            <select id="targetLangs" name="target_langs" class="form-select" multiple>
+                                <option value="es" selected>Spanish</option>
+                                <option value="fr">French</option>
+                                <option value="de">German</option>
+                                <option value="it">Italian</option>
+                                <option value="pt">Portuguese</option>
+                                <option value="ru">Russian</option>
+                                <option value="ja">Japanese</option>
+                                <option value="ko">Korean</option>
+                                <option value="zh">Chinese (Simplified)</option>
+                                <option value="ar">Arabic</option>
+                                <option value="hi">Hindi</option>
+                                <option value="nl">Dutch</option>
+                                <option value="pl">Polish</option>
+                                <option value="tr">Turkish</option>
+                            </select>
+                            <span class="help-text">Select one or more languages.</span>
+                        </div>
+
+                        <div class="option-group">
+                            <label>Output Formats</label>
+                            <div class="format-options">
+                                <label class="format-option">
+                                    <input type="checkbox" name="formats" value="pptx" checked>
+                                    <span>PPTX</span>
+                                </label>
+                                <label class="format-option">
+                                    <input type="checkbox" name="formats" value="pdf">
+                                    <span>PDF</span>
+                                </label>
+                            </div>
+                            <span class="help-text">Choose all formats you want to export. PDF requires LibreOffice on the server.</span>
+                        </div>
+
+                        <div class="option-group">
+                            <label for="service">Translation Service</label>
+                            <select id="service" name="service" class="form-select">
+                                <option value="google">Google Translate (Free)</option>
+                                <option value="deepl">DeepL (Premium Quality) ✓</option>
+                                <option value="openai">OpenAI GPT-4 (Best Accuracy) ✓</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- API Key Input (hidden - using server-side keys) -->
+                    <div id="apiKeySection" class="api-key-section" style="display: none;">
+                        <input type="hidden" id="apiKey" name="api_key" value="">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-large btn-primary btn-submit" id="submitBtn">
+                        <i class="fas fa-language"></i>
+                        <span>Start Translation</span>
+                    </button>
+                </form>
+
+                <!-- Progress Section -->
+                <div id="progressSection" style="display: none;">
+                    <div class="progress-card">
+                        <h3>Translation in Progress</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <p class="progress-text" id="progressText">Initializing...</p>
+                        <div class="progress-details" id="progressDetails"></div>
+                        <div class="progress-languages" id="progressLanguages"></div>
+                    </div>
+                </div>
+
+                <!-- Success Section -->
+                <div id="successSection" style="display: none;">
+                    <div class="success-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Translation Complete!</h3>
+                        <p>Your presentation has been successfully translated.</p>
+                        <p id="warningMessage" class="warning-text" style="display: none;"></p>
+                        <div class="progress-languages" id="successLanguages"></div>
+                        <a href="#" id="downloadBtn" class="btn btn-large btn-primary">
+                            <i class="fas fa-download"></i> Download Translated Files
+                        </a>
+                        <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                            Translate Another File
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Error Section -->
+                <div id="errorSection" style="display: none;">
+                    <div class="error-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Translation Failed</h3>
+                        <p id="errorMessage"></p>
+                        <button type="button" class="btn btn-primary" onclick="resetForm()">
+                            Try Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 PowerPoint Translator Pro. All rights reserved.</p>
+            <p>Powered by advanced AI translation technology</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
