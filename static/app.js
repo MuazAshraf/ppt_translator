@@ -65,17 +65,69 @@ const apiKeySection = document.getElementById('apiKeySection');
 let targetLangChoices = null;
 let defaultLangSelection = [];
 
-if (targetLangSelect && typeof Choices !== 'undefined') {
-    targetLangChoices = new Choices(targetLangSelect, {
-        removeItemButton: true,
-        searchEnabled: true,
-        placeholder: true,
-        placeholderValue: 'Select languages',
-        shouldSort: false,
-        itemSelectText: ''
-    });
+// Load languages dynamically from API
+async function loadLanguages() {
+    try {
+        const response = await fetch('/api/languages');
+        const data = await response.json();
+        const languages = data.languages;
 
-    defaultLangSelection = targetLangChoices.getValue(true) || [];
+        // Clear existing options
+        targetLangSelect.innerHTML = '';
+
+        // Popular languages first
+        const popularLangs = ['es', 'fr', 'de', 'it', 'pt', 'ru', 'ja', 'ko', 'zh-CN', 'ar', 'hi'];
+
+        // Add popular languages group
+        const popularGroup = document.createElement('optgroup');
+        popularGroup.label = '🌟 Popular Languages';
+        popularLangs.forEach(code => {
+            if (languages[code]) {
+                const option = document.createElement('option');
+                option.value = code;
+                option.textContent = languages[code];
+                if (code === 'es') option.selected = true;
+                popularGroup.appendChild(option);
+            }
+        });
+        targetLangSelect.appendChild(popularGroup);
+
+        // Add all other languages
+        const allGroup = document.createElement('optgroup');
+        allGroup.label = '🌍 All Languages (A-Z)';
+        Object.entries(languages).forEach(([code, name]) => {
+            if (!popularLangs.includes(code)) {
+                const option = document.createElement('option');
+                option.value = code;
+                option.textContent = name;
+                allGroup.appendChild(option);
+            }
+        });
+        targetLangSelect.appendChild(allGroup);
+
+        // Initialize Choices.js after loading
+        if (typeof Choices !== 'undefined') {
+            targetLangChoices = new Choices(targetLangSelect, {
+                removeItemButton: true,
+                searchEnabled: true,
+                placeholder: true,
+                placeholderValue: 'Search and select languages...',
+                shouldSort: false,
+                itemSelectText: '',
+                searchPlaceholderValue: 'Type to search...',
+                noResultsText: 'No languages found',
+                maxItemCount: 10
+            });
+            defaultLangSelection = targetLangChoices.getValue(true) || [];
+        }
+    } catch (error) {
+        console.error('Failed to load languages:', error);
+    }
+}
+
+// Load languages on page load
+if (targetLangSelect) {
+    loadLanguages();
 }
 
 // Drag and drop
@@ -100,7 +152,7 @@ uploadArea.addEventListener('drop', (e) => {
             icon: 'warning',
             title: 'Invalid File',
             text: 'Please select a valid PowerPoint file (.pptx)',
-            confirmButtonColor: '#667eea'
+            confirmButtonColor: '#1E40AF'
         });
     }
 });
@@ -140,14 +192,18 @@ function handleFileSelect(file) {
             position: 'top-end',
             showConfirmButton: false,
             timer: 3000,
-            timerProgressBar: true
+            timerProgressBar: true,
+            iconColor: '#1E40AF',
+            customClass: {
+                popup: 'colored-toast'
+            }
         });
     } else {
         Swal.fire({
             icon: 'error',
             title: 'Invalid File',
             text: 'Please select a valid PowerPoint file (.pptx)',
-            confirmButtonColor: '#667eea'
+            confirmButtonColor: '#1E40AF'
         });
     }
 }
@@ -251,7 +307,7 @@ translationForm.addEventListener('submit', async (e) => {
             icon: 'warning',
             title: 'No File Selected',
             text: 'Please select a file to translate',
-            confirmButtonColor: '#667eea'
+            confirmButtonColor: '#1E40AF'
         });
         return;
     }
@@ -265,7 +321,7 @@ translationForm.addEventListener('submit', async (e) => {
             icon: 'warning',
             title: 'No Language Selected',
             text: 'Please select at least one target language',
-            confirmButtonColor: '#667eea'
+            confirmButtonColor: '#1E40AF'
         });
         return;
     }
@@ -277,7 +333,7 @@ translationForm.addEventListener('submit', async (e) => {
             icon: 'warning',
             title: 'No Format Selected',
             text: 'Please select at least one output format',
-            confirmButtonColor: '#667eea'
+            confirmButtonColor: '#1E40AF'
         });
         return;
     }
@@ -401,7 +457,7 @@ translationForm.addEventListener('submit', async (e) => {
                             title: 'Translation Complete!',
                             text: `Your presentation has been successfully translated to ${currentLanguages.length} language(s)`,
                             confirmButtonText: 'Download Now',
-                            confirmButtonColor: '#667eea',
+                            confirmButtonColor: '#1E40AF',
                             showCancelButton: true,
                             cancelButtonText: 'Close',
                             cancelButtonColor: '#6c757d'
@@ -452,7 +508,7 @@ translationForm.addEventListener('submit', async (e) => {
             icon: 'error',
             title: 'Translation Failed',
             text: error.message || 'An error occurred during translation. Please try again.',
-            confirmButtonColor: '#667eea',
+            confirmButtonColor: '#1E40AF',
             confirmButtonText: 'Try Again'
         });
     }
